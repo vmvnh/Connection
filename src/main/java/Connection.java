@@ -16,9 +16,14 @@ public final class Connection {
   public static void main(String[] args) {
     try {
       var userId = ConsoleService.getUserId(args);
-      var userData = HttpService.getUserWithUrlConnection(userId);
-      User user = JsonService.parseWithString(userData);
-      System.out.println(user);
+      String userData;
+      if (userId > 0) {
+        userData = HttpService.getUserWithUrlConnection(userId);
+        User user = JsonService.parseWithString(userData);
+        System.out.println(user);
+      } else {
+        System.err.println(Failures.NOT_FOUND);
+      }
     } catch (Exception e) {
       System.err.println(Failures.NOT_FOUND);
     }
