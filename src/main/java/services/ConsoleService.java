@@ -14,6 +14,7 @@ public class ConsoleService {
     if (args.length != 1) {
       throw new IllegalArgumentException();
     }
-    return Integer.parseInt(args[0]);
+    var userId = Integer.parseInt(args[0]);
+    return Math.max(userId, 0);
   }
 }
